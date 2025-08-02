@@ -4,14 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doa Harian</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #f1f1f1;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .judul {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    nav button#menuBtn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    nav ul.show {
+      display: block;
+    }
+
+    nav ul li {
+      list-style: none;
+      margin: 10px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .doa {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .doa .arab {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 24px;
+      direction: rtl;
+      text-align: right;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f9f9f9;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
   <header class="header">
     <h1 class="judul">📿 Kumpulan Doa Harian</h1>
     <nav>
-      <button id="menuBtn">☰</button>
+      <button id="menuBtn">⋮</button>
       <ul id="menuList" class="hidden">
         <li><a href="juz30.html">📖 Juz 30</a></li>
         <li><a href="tentang.html">🙋 Tentang Saya</a></li>
@@ -20,13 +98,49 @@
   </header>
 
   <main id="doaContainer">
-    <!-- Isi Doa akan ditampilkan dengan script.js dari doa.json -->
+    <!-- Doa akan ditampilkan di sini -->
   </main>
 
   <footer>
     <p>&copy; 2025 - Doa Harian oleh Alass</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menuBtn");
+      const menuList = document.getElementById("menuList");
+
+      menuBtn.addEventListener("click", () => {
+        menuList.classList.toggle("hidden");
+        menuList.classList.toggle("show");
+      });
+
+      // Tutup menu jika klik di luar
+      document.addEventListener("click", (event) => {
+        if (!menuBtn.contains(event.target) && !menuList.contains(event.target)) {
+          menuList.classList.add("hidden");
+          menuList.classList.remove("show");
+        }
+      });
+
+      // Load doa dari doa.json
+      fetch("doa.json")
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById("doaContainer");
+          data.forEach(doa => {
+            const card = document.createElement("div");
+            card.className = "doa";
+            card.innerHTML = `
+              <h3>${doa.judul}</h3>
+              <p class="arab">${doa.arab}</p>
+              <p><em>${doa.latin}</em></p>
+              <p>${doa.arti}</p>
+            `;
+            container.appendChild(card);
+          });
+        });
+    });
+  </script>
 </body>
 </html>
