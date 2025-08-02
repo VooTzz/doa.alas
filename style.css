@@ -13,6 +13,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative; /* Tambahan penting untuk menu absolut */
 }
 
 .judul {
@@ -28,6 +29,7 @@ nav button {
   cursor: pointer;
 }
 
+/* === MENU DROPDOWN === */
 #menuList {
   position: absolute;
   right: 1rem;
@@ -36,18 +38,31 @@ nav button {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   display: none;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+#menuList.show {
+  display: block;
 }
 
 #menuList li {
   list-style: none;
   padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+#menuList li:hover {
+  background-color: #f0f0f0;
 }
 
 #menuList li a {
   text-decoration: none;
   color: #10b981;
+  font-weight: 500;
 }
 
+/* === UTAMA === */
 main {
   padding: 2rem;
 }
@@ -77,6 +92,7 @@ main {
   margin: 0.5rem 0;
 }
 
+/* === FOOTER === */
 footer {
   text-align: center;
   padding: 1rem;
@@ -86,6 +102,7 @@ footer {
   margin-top: 2rem;
 }
 
+/* === CLASS BANTUAN === */
 .hidden {
   display: none;
 }
