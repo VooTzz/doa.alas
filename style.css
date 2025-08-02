@@ -1,0 +1,68 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #0d9488;
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menuList {
+  background: #ffffff;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: none;
+}
+
+#menuList li {
+  padding: 10px;
+}
+
+#menuList li a {
+  text-decoration: none;
+  color: #0d9488;
+}
+
+main {
+  padding: 1em;
+}
+
+.doa {
+  background: white;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.doa .arab {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1.5em;
+  direction: rtl;
+  text-align: right;
+}
+
+.juz-list li {
+  padding: 10px;
+}
+
+.profil img {
+  width: 150px;
+  border-radius: 50%;
+}
