@@ -1,3 +1,4 @@
+/* ===== Umum ===== */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f5f7fa;
@@ -135,7 +136,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* ===== Kelas Bantu ===== */
+/* ===== Utility Classes ===== */
 .hidden {
   display: none;
 }
