@@ -6,6 +6,7 @@ body {
   color: #333;
 }
 
+/* ===== Header & Judul ===== */
 .header {
   background-color: #10b981;
   color: white;
@@ -13,7 +14,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* Tambahan penting untuk menu absolut */
+  position: relative; /* untuk posisi absolut menu */
+  flex-wrap: wrap;
 }
 
 .judul {
@@ -21,7 +23,38 @@ body {
   font-size: 1.5rem;
 }
 
-nav button {
+/* ===== Navigasi Aksi: Pencarian, Login, Menu ===== */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#searchInput {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+#loginBtn {
+  background-color: white;
+  color: #10b981;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#loginBtn:hover {
+  background-color: #e5f9f0;
+}
+
+/* ===== Tombol Menu (⋮) ===== */
+nav button,
+#menuBtn {
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -29,7 +62,7 @@ nav button {
   cursor: pointer;
 }
 
-/* === MENU DROPDOWN === */
+/* ===== Dropdown Menu ===== */
 #menuList {
   position: absolute;
   right: 1rem;
@@ -62,7 +95,7 @@ nav button {
   font-weight: 500;
 }
 
-/* === UTAMA === */
+/* ===== Konten Utama ===== */
 main {
   padding: 2rem;
 }
@@ -92,7 +125,7 @@ main {
   margin: 0.5rem 0;
 }
 
-/* === FOOTER === */
+/* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 1rem;
@@ -102,7 +135,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* === CLASS BANTUAN === */
+/* ===== Kelas Bantu ===== */
 .hidden {
   display: none;
 }
