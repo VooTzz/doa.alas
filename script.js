@@ -33,19 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === LOGIN GOOGLE (Firebase) ===
-  loginBtn.addEventListener("click", () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-      .then(result => {
-        currentUser = result.user;
-        alert(`Login berhasil sebagai ${currentUser.displayName}`);
-      })
-      .catch(error => {
-        console.error("Login error:", error);
-        alert("Gagal login.");
-      });
-  });
-
+  loginBtn?.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
+  
   // === LOAD DOA ===
   fetch("doa.json")
     .then(res => res.json())
