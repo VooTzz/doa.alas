@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const doaContainer = document.getElementById("doaContainer");
   const beritaContainer = document.getElementById("beritaContainer");
   const favoritContainer = document.getElementById("favoritContainer");
+  const searchHistoryDiv = document.getElementById("searchHistory");
 
   let allData = [];
   let currentUser = null;
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => {
     if (!menuBtn?.contains(e.target) && !menuList?.contains(e.target)) {
       menuList?.classList.add("hidden");
-      if (menuList) menuList.style.display = "none";
+      menuList.style.display = "none";
     }
   });
 
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-mode");
   }
 
-  // === LOGIN BUTTON ===
+  // === LOGIN ===
   loginBtn?.addEventListener("click", () => {
     window.location.href = "login.html";
   });
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       beritaContainer.innerHTML = "";
       list.forEach(berita => {
         const card = document.createElement("div");
-        card.className = "doa"; // gaya sama
+        card.className = "doa";
         card.innerHTML = `
           <h3>${berita.judul}</h3>
           <p>${berita.isi}</p>
@@ -127,10 +128,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === SEARCH ===
+  // === SEARCH INPUT ===
   searchInput?.addEventListener("input", () => {
     const keyword = searchInput.value.toLowerCase();
     localStorage.setItem("lastSearch", keyword);
+    if (keyword.trim()) simpanRiwayat(keyword);
 
     if (doaContainer) {
       const filtered = allData.filter(d => d.judul.toLowerCase().includes(keyword));
@@ -144,5 +146,41 @@ document.addEventListener("DOMContentLoaded", () => {
   // === LOAD LAST SEARCH ===
   if (searchInput && localStorage.getItem("lastSearch")) {
     searchInput.value = localStorage.getItem("lastSearch");
+  }
+
+  // === TAMPILKAN RIWAYAT SAAT AWAL ===
+  tampilkanRiwayat();
+
+  // === FUNGSI RIWAYAT PENCARIAN ===
+  function simpanRiwayat(kataKunci) {
+    let riwayat = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    riwayat = riwayat.filter(item => item !== kataKunci);
+    riwayat.unshift(kataKunci);
+    if (riwayat.length > 10) riwayat = riwayat.slice(0, 10);
+    localStorage.setItem("searchHistory", JSON.stringify(riwayat));
+    tampilkanRiwayat();
+  }
+
+  function tampilkanRiwayat() {
+    if (!searchHistoryDiv) return;
+    const riwayat = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    if (riwayat.length === 0) {
+      searchHistoryDiv.innerHTML = "";
+      return;
+    }
+
+    searchHistoryDiv.innerHTML = `
+      <p><strong>Riwayat Pencarian:</strong></p>
+      <ul style="list-style: none; padding-left: 0;">
+        ${riwayat.map(item => `<li><button class="riwayat-btn">${item}</button></li>`).join("")}
+      </ul>
+    `;
+
+    document.querySelectorAll(".riwayat-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        searchInput.value = btn.textContent;
+        searchInput.dispatchEvent(new Event("input"));
+      });
+    });
   }
 });
