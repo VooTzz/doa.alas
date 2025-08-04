@@ -6,6 +6,30 @@
     "arti": "Ya Allah, Engkau Maha Sejahtera dan dari-Mu lah segala kesejahteraan, Maha Suci Engkau wahai Pemilik Keagungan dan Kemuliaan."
   },
   {
+    "judul": "Doa Memohon Ampunan",
+    "arab": "رَبِّ اغْفِرْ لِي وَارْحَمْنِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ",
+    "latin": "Rabbi ighfir lii warhamnii wa tub 'alayya, innaka anta at-Tawwaabu ar-Rahiim.",
+    "arti": "Ya Tuhanku, ampunilah aku, kasihanilah aku, dan terimalah taubatku. Sungguh Engkaulah Maha Penerima Taubat lagi Maha Penyayang."
+  },
+  {
+    "judul": "Doa untuk Kedua Orang Tua",
+    "arab": "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+    "latin": "Rabbi irhamhuma kamaa rabbayaani shaghiiraa.",
+    "arti": "Ya Tuhanku, kasihanilah mereka berdua sebagaimana mereka telah mendidikku waktu kecil."
+  },
+  {
+    "judul": "Doa untuk Orang yang Telah Meninggal",
+    "arab": "اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ",
+    "latin": "Allahummaghfir lahu warhamhu wa ‘aafihi wa’fu ‘anhu.",
+    "arti": "Ya Allah, ampunilah dia, rahmatilah dia, selamatkanlah dia dan maafkanlah kesalahannya."
+  },
+  {
+    "judul": "Doa Meminta Sesuatu (Hajat)",
+    "arab": "اللَّهُمَّ إِنِّي أَسْأَلُكَ فَإِنَّكَ أَهْلٌ أَنْ تُسْأَلَ، وَأُحِبُّ أَنْ تُجَابَ دُعَائِي",
+    "latin": "Allahumma inni as-aluka fa innaka ahlun an tus-ala, wa uhibbu an tujaaba du‘aa’ii.",
+    "arti": "Ya Allah, aku memohon kepada-Mu, karena Engkau pantas dimintai, dan aku suka jika doaku Engkau kabulkan."
+  },
+  {
     "judul": "Doa Sapu Jagat (Lengkap)",
     "arab": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً، وَفِي الآخِرَةِ حَسَنَةً، وَقِنَا عَذَابَ النَّارِ",
     "latin": "Rabbanaa aatinaa fid-dunyaa hasanah, wa fil aakhirati hasanah, wa qinaa ‘adzaaban-naar.",
@@ -82,5 +106,23 @@
     "arab": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ للهِ وَالْحَمْدُ للهِ",
     "latin": "Amsainaa wa amsal-mulku lillaah walhamdulillaah.",
     "arti": "Kami telah memasuki petang, dan kerajaan hanya milik Allah, segala puji bagi Allah."
+  },
+  {
+    "judul": "Doa Ketika Hujan Turun",
+    "arab": "اللَّهُمَّ صَيِّبًا نَافِعًا",
+    "latin": "Allahumma shayyiban naafi'an.",
+    "arti": "Ya Allah, turunkanlah hujan yang bermanfaat."
+  },
+  {
+    "judul": "Doa Memohon Kesembuhan",
+    "arab": "اللَّهُمَّ رَبَّ النَّاسِ، أَذْهِبِ الْبَأْسَ، اشْفِ أَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا",
+    "latin": "Allahumma rabbann-naas, adzhibil-ba’sa, isyfi anta asy-Syaafii, laa syifaa’a illaa syifaa’uka, syifaa’an laa yughaadiru saqamaa.",
+    "arti": "Ya Allah, Tuhan seluruh manusia, hilangkanlah penyakit ini, sembuhkanlah, Engkau-lah Maha Penyembuh, tidak ada kesembuhan kecuali dari-Mu, kesembuhan yang tidak meninggalkan penyakit."
+  },
+  {
+    "judul": "Doa Memohon Ilmu yang Bermanfaat",
+    "arab": "اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي وَعَلِّمْنِي مَا يَنْفَعُنِي وَزِدْنِي عِلْمًا",
+    "latin": "Allahumma anfa’nii bimaa ‘allamtanii, wa ‘allimnii maa yanfa’uunii, wa zidnii ‘ilman.",
+    "arti": "Ya Allah, berilah aku manfaat dari apa yang Engkau ajarkan kepadaku, ajarkanlah sesuatu yang bermanfaat bagiku, dan tambahkanlah ilmuku."
   }
 ]
