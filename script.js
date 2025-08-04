@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const doaContainer = document.getElementById("doaContainer");
   const beritaContainer = document.getElementById("beritaContainer");
 
-  let allDoa = [];
+  let allData = []; // Bisa doa atau berita, tergantung halaman
   let currentUser = null;
 
   // === TOGGLE MENU ===
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === DARK MODE ===
+  // === MODE GELAP ===
   darkModeBtn?.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-mode");
   }
 
-  // === LOGIN BUTTON ===
+  // === TOMBOL LOGIN ===
   loginBtn?.addEventListener("click", () => {
     window.location.href = "login.html";
   });
@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("doa.json")
       .then(res => res.json())
       .then(data => {
-        allDoa = data;
-        displayDoa(allDoa);
+        allData = data;
+        displayDoa(allData);
       });
 
     function displayDoa(list) {
@@ -64,21 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    searchInput?.addEventListener("input", () => {
-      const keyword = searchInput.value.toLowerCase();
-      localStorage.setItem("lastSearch", keyword);
-      const filtered = allDoa.filter(d => d.judul.toLowerCase().includes(keyword));
-      displayDoa(filtered);
-    });
-
-    if (localStorage.getItem("lastSearch")) {
-      searchInput.value = localStorage.getItem("lastSearch");
-      const filtered = allDoa.filter(d =>
-        d.judul.toLowerCase().includes(searchInput.value.toLowerCase())
-      );
-      displayDoa(filtered);
-    }
-
     function saveFavorite(doa) {
       let favs = JSON.parse(localStorage.getItem("favorites") || "[]");
       if (!favs.some(d => d.judul === doa.judul)) {
@@ -96,15 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("berita.json")
       .then(res => res.json())
       .then(data => {
-        allDoa = data; // pakai variabel sama agar fungsi pencarian tetap bisa
-        displayBerita(allDoa);
+        allData = data;
+        displayBerita(allData);
       });
 
     function displayBerita(list) {
       beritaContainer.innerHTML = "";
       list.forEach(berita => {
         const card = document.createElement("div");
-        card.className = "doa";
+        card.className = "doa"; // agar gaya sama
         card.innerHTML = `
           <h3>${berita.judul}</h3>
           <p>${berita.isi}</p>
@@ -112,20 +97,24 @@ document.addEventListener("DOMContentLoaded", () => {
         beritaContainer.appendChild(card);
       });
     }
+  }
 
-    searchInput?.addEventListener("input", () => {
-      const keyword = searchInput.value.toLowerCase();
-      localStorage.setItem("lastSearch", keyword);
-      const filtered = allDoa.filter(b => b.judul.toLowerCase().includes(keyword));
-      displayBerita(filtered);
-    });
+  // === PENCARIAN UMUM ===
+  searchInput?.addEventListener("input", () => {
+    const keyword = searchInput.value.toLowerCase();
+    localStorage.setItem("lastSearch", keyword);
 
-    if (localStorage.getItem("lastSearch")) {
-      searchInput.value = localStorage.getItem("lastSearch");
-      const filtered = allDoa.filter(b =>
-        b.judul.toLowerCase().includes(searchInput.value.toLowerCase())
-      );
+    if (doaContainer) {
+      const filtered = allData.filter(d => d.judul.toLowerCase().includes(keyword));
+      displayDoa(filtered);
+    } else if (beritaContainer) {
+      const filtered = allData.filter(b => b.judul.toLowerCase().includes(keyword));
       displayBerita(filtered);
     }
+  });
+
+  // === LOAD LAST SEARCH ===
+  if (localStorage.getItem("lastSearch")) {
+    searchInput.value = localStorage.getItem("lastSearch");
   }
 });
