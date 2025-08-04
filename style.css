@@ -11,6 +11,7 @@ body.dark-mode {
   color: #f5f5f5;
 }
 
+/* HEADER */
 .header {
   background-color: #10b981;
   color: white;
@@ -34,6 +35,167 @@ nav button {
   cursor: pointer;
 }
 
+/* MENU */
+#menuList {
+  position: absolute;
+  right: 1rem;
+  top: 4rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 100;
+}
+
+body.dark-mode #menuList {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+#menuList li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+}
+
+#menuList li a {
+  text-decoration: none;
+  color: #10b981;
+}
+
+body.dark-mode #menuList li a {
+  color: #86efac;
+}
+
+/* MAIN */
+main {
+  padding: 2rem;
+}
+
+/* INPUT PENCARIAN */
+input[type="text"]#searchInput {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.long-search {
+  width: 300px;
+  max-width: 90vw;
+}
+
+body.dark-mode input[type="text"]#searchInput {
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  border-color: #555;
+}
+
+/* DOA */
+.doa {
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .doa {
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 6px rgba(255,255,255,0.05);
+}
+
+.doa h3 {
+  margin: 0 0 0.5rem;
+  color: #047857;
+}
+
+body.dark-mode .doa h3 {
+  color: #6ee7b7;
+}
+
+.doa .arab {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1.5rem;
+  direction: rtl;
+  text-align: right;
+  color: #1e293b;
+}
+
+body.dark-mode .doa .arab {
+  color: #cbd5e1;
+}
+
+.doa p {
+  margin: 0.5rem 0;
+}
+
+.doa button {
+  margin-top: 1rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #facc15;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .doa button {
+  background-color: #fde68a;
+  color: #1a1a1a;
+}
+
+/* BERITA */
+.berita {
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .berita {
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  box-shadow: 0 4px 6px rgba(255,255,255,0.05);
+}
+
+.berita h3 {
+  margin: 0 0 0.5rem;
+  color: #047857;
+}
+
+body.dark-mode .berita h3 {
+  color: #6ee7b7;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #10b981;
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* BUTTONS */
+button#darkModeBtn, button#loginBtn {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #047857;
+  color: white;
+  cursor: pointer;
+}
+
+body.dark-mode button#darkModeBtn, body.dark-mode button#loginBtn {
+  background-color: #059669;
+}
+
+/* LOGIN PAGE */
 .login-page {
   background: linear-gradient(to right, #10b981, #34d399);
   font-family: 'Poppins', sans-serif;
@@ -83,136 +245,7 @@ nav button {
   background-color: #059669;
 }
 
-#menuList {
-  position: absolute;
-  right: 1rem;
-  top: 4rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  display: none;
-  z-index: 100;
-}
-
-body.dark-mode #menuList {
-  background-color: #333;
-  color: #f5f5f5;
-}
-
-#menuList li {
-  list-style: none;
-  padding: 0.5rem 1rem;
-}
-
-#menuList li a {
-  text-decoration: none;
-  color: #10b981;
-}
-
-body.dark-mode #menuList li a {
-  color: #86efac;
-}
-
-main {
-  padding: 2rem;
-}
-
-.doa {
-  background-color: white;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-body.dark-mode .doa {
-  background-color: #2c2c2c;
-  box-shadow: 0 4px 6px rgba(255,255,255,0.05);
-}
-
-.doa h3 {
-  margin: 0 0 0.5rem;
-  color: #047857;
-}
-
-body.dark-mode .doa h3 {
-  color: #6ee7b7;
-}
-
-.doa .arab {
-  font-family: 'Noto Naskh Arabic', serif;
-  font-size: 1.5rem;
-  direction: rtl;
-  text-align: right;
-  color: #1e293b;
-}
-
-body.dark-mode .doa .arab {
-  color: #cbd5e1;
-}
-
-.doa p {
-  margin: 0.5rem 0;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #10b981;
-  color: white;
-  font-size: 0.9rem;
-  margin-top: 2rem;
-}
-
+/* UTILITAS */
 .hidden {
   display: none;
-}
-
-input[type="text"]#searchInput {
-  padding: 0.5rem 1rem;
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.long-search {
-  width: 300px;
-  max-width: 90vw;
-}
-
-body.dark-mode input[type="text"]#searchInput {
-  background-color: #2c2c2c;
-  color: #f5f5f5;
-  border-color: #555;
-}
-
-button#darkModeToggle, button#loginBtn {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #047857;
-  color: white;
-  cursor: pointer;
-}
-
-body.dark-mode button#darkModeToggle, body.dark-mode button#loginBtn {
-  background-color: #059669;
-}
-
-.doa button {
-  margin-top: 1rem;
-  padding: 0.4rem 0.8rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #facc15;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-body.dark-mode .doa button {
-  background-color: #fde68a;
-  color: #1a1a1a;
 }
