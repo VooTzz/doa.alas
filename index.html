@@ -2,275 +2,37 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Doa Harian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Berita Harian</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet" />
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f7fa;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-
-    .dark-mode {
-      background-color: #1a202c;
-      color: #eee;
-    }
-
-    .header {
-      background-color: #10b981;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .judul {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    .tools {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #searchInput {
-      padding: 0.4rem;
-      border-radius: 6px;
-      border: none;
-    }
-
-    #darkModeToggle, #loginBtn {
-      padding: 0.4rem 0.6rem;
-      border: none;
-      background: white;
-      color: #10b981;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    nav button {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-    }
-
-    #menuList {
-      position: absolute;
-      right: 1rem;
-      top: 4rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      display: none;
-    }
-
-    #menuList li {
-      list-style: none;
-      padding: 0.5rem 1rem;
-    }
-
-    #menuList li a {
-      text-decoration: none;
-      color: #10b981;
-    }
-
-    main {
-      padding: 2rem;
-    }
-
-    .doa {
-      background-color: white;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .dark-mode .doa {
-      background-color: #2d3748;
-      color: #fff;
-    }
-
-    .doa h3 {
-      margin: 0 0 0.5rem;
-      color: #047857;
-    }
-
-    .doa .arab {
-      font-family: 'Noto Naskh Arabic', serif;
-      font-size: 1.5rem;
-      direction: rtl;
-      text-align: right;
-      color: #1e293b;
-    }
-
-    .doa p {
-      margin: 0.5rem 0;
-    }
-
-    .doa button {
-      margin-top: 10px;
-      padding: 0.4rem 0.6rem;
-      border: none;
-      background: #10b981;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #10b981;
-      color: white;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header class="header">
-    <h1 class="judul">📿 Kumpulan Doa Harian</h1>
+    <h1 class="judul">📰 Berita Harian</h1>
     <div class="tools">
-      <input type="text" id="searchInput" placeholder="Cari doa..." />
+      <input type="text" id="searchInput" class="long-search" placeholder="Cari berita..." />
       <button id="darkModeToggle">🌙</button>
       <button id="loginBtn">🔐 Login</button>
       <nav>
         <button id="menuBtn">⋮</button>
         <ul id="menuList" class="hidden">
-          <li><a href="juz30.html">📖 Juz 30</a></li>
+          <li><a href="halaman2.html">📿 Doa Harian</a></li>
           <li><a href="tentang.html">🙋 Tentang Saya</a></li>
+          <li><a href="juz30.html">🍁 Al Qur'an</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main id="doaContainer">
-    <!-- Doa akan ditampilkan di sini -->
+  <main id="beritaContainer">
+    <!-- Konten berita akan dimuat di sini -->
   </main>
 
   <footer>
-    <p>&copy; 2025 - Doa Harian oleh Alass</p>
+    <p>&copy; 2025 - Berita Harian oleh Alass</p>
   </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.getElementById("menuBtn");
-      const menuList = document.getElementById("menuList");
-      const searchInput = document.getElementById("searchInput");
-      const darkModeToggle = document.getElementById("darkModeToggle");
-      const loginBtn = document.getElementById("loginBtn");
-
-      menuBtn.addEventListener("click", () => {
-        menuList.classList.toggle("hidden");
-        menuList.style.display = menuList.classList.contains("hidden") ? "none" : "block";
-      });
-
-      document.addEventListener("click", (event) => {
-        if (!menuBtn.contains(event.target) && !menuList.contains(event.target)) {
-          menuList.classList.add("hidden");
-          menuList.style.display = "none";
-        }
-      });
-
-      if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-      }
-
-      darkModeToggle?.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-      });
-
-      loginBtn?.addEventListener("click", () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
-          .then(result => {
-            const user = result.user;
-            alert(`Selamat datang, ${user.displayName}`);
-          })
-          .catch(error => {
-            console.error("Login error:", error);
-          });
-      });
-
-      searchInput?.addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase();
-        if (query.length > 1) saveSearchHistory(query);
-        filterDoa(query);
-      });
-
-      function saveSearchHistory(query) {
-        let history = JSON.parse(localStorage.getItem('searchHistory') || '[]');
-        if (!history.includes(query)) {
-          history.push(query);
-          localStorage.setItem('searchHistory', JSON.stringify(history));
-        }
-      }
-
-      function filterDoa(query) {
-        const allDoa = document.querySelectorAll(".doa");
-        allDoa.forEach(card => {
-          const text = card.textContent.toLowerCase();
-          card.style.display = text.includes(query) ? "block" : "none";
-        });
-      }
-
-      fetch("doa.json")
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById("doaContainer");
-          data.forEach((doa, index) => {
-            const card = document.createElement("div");
-            card.className = "doa";
-            card.innerHTML = `
-              <h3>${doa.judul}</h3>
-              <p class="arab">${doa.arab}</p>
-              <p><em>${doa.latin}</em></p>
-              <p>${doa.arti}</p>
-              <button onclick="toggleFavorite(${index})">🤍 Favorit</button>
-            `;
-            container.appendChild(card);
-          });
-        });
-    });
-
-    function toggleFavorite(id) {
-      let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-      if (favorites.includes(id)) {
-        favorites = favorites.filter(fid => fid !== id);
-      } else {
-        favorites.push(id);
-      }
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
