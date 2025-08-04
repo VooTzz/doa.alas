@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favorit Saya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .menu-list {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: #ffffff;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-list a {
+      display: block;
+      padding: 0.5rem 0;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .menu-list a:hover {
+      color: #3498db;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .btn-kembali {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-kembali:hover {
+      background-color: #2980b9;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .doa {
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #3498db;
+      background: #f1f6fb;
+      border-radius: 8px;
+    }
+
+    .doa h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 1.2rem;
+    }
+
+    .doa p {
+      margin: 0.5rem 0;
+    }
+
+    .empty {
+      text-align: center;
+      color: #888;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+    <h1>Favorit Saya</h1>
+    <a href="index.html" class="btn-kembali">⬅ Kembali</a>
+
+    <div class="menu-list" id="menuList">
+      <a href="index.html">Beranda</a>
+      <a href="halaman2.html">Doa Harian</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="juz30.html">Al Qur'an</a>
+    </div>
+  </header>
+
+  <main id="favoritContainer">
+    <p class="empty">Belum ada doa yang difavoritkan.</p>
+  </main>
+
+  <script>
+    // Toggle menu
+    const menuBtn = document.getElementById("menuBtn");
+    const menuList = document.getElementById("menuList");
+    menuBtn.addEventListener("click", () => {
+      menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+
+    // Load favorit dari localStorage
+    const favoritContainer = document.getElementById("favoritContainer");
+    const favoritData = JSON.parse(localStorage.getItem("doaFavorit")) || [];
+
+    if (favoritData.length > 0) {
+      favoritContainer.innerHTML = "";
+
+      favoritData.forEach(doa => {
+        const card = document.createElement("div");
+        card.className = "doa";
+
+        card.innerHTML = `
+          <h2>${doa.judul}</h2>
+          <p><strong>Arab:</strong><br/>${doa.arab}</p>
+          <p><strong>Latin:</strong><br/>${doa.latin}</p>
+          <p><strong>Arti:</strong><br/>${doa.arti}</p>
+        `;
+
+        favoritContainer.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
