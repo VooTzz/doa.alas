@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const darkModeBtn = document.getElementById("darkModeBtn");
   const doaContainer = document.getElementById("doaContainer");
   const beritaContainer = document.getElementById("beritaContainer");
+  const favoritContainer = document.getElementById("favoritContainer");
 
-  let allData = []; // Bisa doa atau berita, tergantung halaman
+  let allData = [];
   let currentUser = null;
 
   // === TOGGLE MENU ===
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === MODE GELAP ===
+  // === DARK MODE ===
   darkModeBtn?.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
     localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
@@ -33,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-mode");
   }
 
-  // === TOMBOL LOGIN ===
+  // === LOGIN BUTTON ===
   loginBtn?.addEventListener("click", () => {
     window.location.href = "login.html";
   });
 
-  // === HALAMAN DOA ===
+  // === DOA PAGE ===
   if (doaContainer) {
     fetch("doa.json")
       .then(res => res.json())
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === HALAMAN BERITA ===
+  // === BERITA PAGE ===
   if (beritaContainer) {
     fetch("berita.json")
       .then(res => res.json())
@@ -89,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       beritaContainer.innerHTML = "";
       list.forEach(berita => {
         const card = document.createElement("div");
-        card.className = "doa"; // agar gaya sama
+        card.className = "doa"; // gaya sama
         card.innerHTML = `
           <h3>${berita.judul}</h3>
           <p>${berita.isi}</p>
@@ -99,7 +100,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === PENCARIAN UMUM ===
+  // === FAVORIT PAGE ===
+  if (favoritContainer) {
+    const favoritData = JSON.parse(localStorage.getItem("favorites") || "[]");
+    if (favoritData.length > 0) {
+      favoritContainer.innerHTML = "";
+      favoritData.forEach((doa, index) => {
+        const card = document.createElement("div");
+        card.className = "doa";
+        card.innerHTML = `
+          <h2>${doa.judul}</h2>
+          <p><strong>Arab:</strong><br/>${doa.arab}</p>
+          <p><strong>Latin:</strong><br/>${doa.latin}</p>
+          <p><strong>Arti:</strong><br/>${doa.arti}</p>
+          <button class="hapusBtn">🗑 Hapus</button>
+        `;
+        card.querySelector(".hapusBtn").addEventListener("click", () => {
+          favoritData.splice(index, 1);
+          localStorage.setItem("favorites", JSON.stringify(favoritData));
+          location.reload();
+        });
+        favoritContainer.appendChild(card);
+      });
+    } else {
+      favoritContainer.innerHTML = `<p class="empty">Belum ada doa yang difavoritkan.</p>`;
+    }
+  }
+
+  // === SEARCH ===
   searchInput?.addEventListener("input", () => {
     const keyword = searchInput.value.toLowerCase();
     localStorage.setItem("lastSearch", keyword);
@@ -114,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === LOAD LAST SEARCH ===
-  if (localStorage.getItem("lastSearch")) {
+  if (searchInput && localStorage.getItem("lastSearch")) {
     searchInput.value = localStorage.getItem("lastSearch");
   }
 });
