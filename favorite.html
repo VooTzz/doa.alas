@@ -63,16 +63,15 @@
     }
 
     .btn-kembali {
-      display: inline-block;
       padding: 8px 16px;
       background-color: #3498db;
       color: #fff;
       border: none;
       border-radius: 6px;
-      text-decoration: none;
       font-size: 0.9rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      text-decoration: none;
     }
 
     .btn-kembali:hover {
@@ -94,6 +93,7 @@
       border-left: 5px solid #3498db;
       background: #f1f6fb;
       border-radius: 8px;
+      position: relative;
     }
 
     .doa h2 {
@@ -104,6 +104,23 @@
 
     .doa p {
       margin: 0.5rem 0;
+    }
+
+    .hapusBtn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .hapusBtn:hover {
+      background: #c0392b;
     }
 
     .empty {
@@ -141,12 +158,17 @@
 
     // Load favorit dari localStorage
     const favoritContainer = document.getElementById("favoritContainer");
-    const favoritData = JSON.parse(localStorage.getItem("doaFavorit")) || [];
+    let favoritData = JSON.parse(localStorage.getItem("doaFavorit")) || [];
 
-    if (favoritData.length > 0) {
+    function tampilkanFavorit() {
       favoritContainer.innerHTML = "";
 
-      favoritData.forEach(doa => {
+      if (favoritData.length === 0) {
+        favoritContainer.innerHTML = '<p class="empty">Belum ada doa yang difavoritkan.</p>';
+        return;
+      }
+
+      favoritData.forEach((doa, index) => {
         const card = document.createElement("div");
         card.className = "doa";
 
@@ -155,11 +177,20 @@
           <p><strong>Arab:</strong><br/>${doa.arab}</p>
           <p><strong>Latin:</strong><br/>${doa.latin}</p>
           <p><strong>Arti:</strong><br/>${doa.arti}</p>
+          <button class="hapusBtn" data-index="${index}">Hapus</button>
         `;
+
+        card.querySelector(".hapusBtn").addEventListener("click", () => {
+          favoritData.splice(index, 1);
+          localStorage.setItem("doaFavorit", JSON.stringify(favoritData));
+          tampilkanFavorit();
+        });
 
         favoritContainer.appendChild(card);
       });
     }
+
+    tampilkanFavorit();
   </script>
 </body>
 </html>
