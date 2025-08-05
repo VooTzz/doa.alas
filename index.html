@@ -14,61 +14,63 @@
       <input type="text" id="searchInput" class="long-search" placeholder="Cari berita..." />
       <div id="searchHistory"></div>
 
-      <!-- Dark Mode Button -->
+      <!-- Tombol dark mode -->
       <button id="darkModeToggle" title="Ganti Mode">🌙</button>
 
-      <!-- Login Button -->
+      <!-- Tombol login -->
       <button id="loginBtn" onclick="window.location.href='login.html'">🔐 Login</button>
 
-      <!-- Menu Button & Menu List -->
+      <!-- Menu navigasi -->
       <nav>
-        <button id="menuBtn">≡</button>
-      <ul id="menuList" class="hidden">
-        <li><a href="index.html">🏠 Halaman Utama</a></li>
-        <li><a href="halaman2.html">📿 Doa Harian</a></li>
-        <li><a href="juz30.html">📖 Juz 30</a></li>
-        <li><a href="favorite.html"> Favorite</a><li>
-        <li><a href="tentang.html">🙋 Tentang Saya</a></li>
+        <button id="menuBtn" title="Menu">⋮</button>
+        <ul id="menuList" class="hidden">
+          <li><a href="halaman2.html">📿 Doa Harian</a></li>
+          <li><a href="tentang.html">🙋 Tentang Saya</a></li>
+          <li><a href="juz30.html">🍁 Al Qur'an</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="beritaContainer">
-    <div class="berita">
-      <h3>Contoh Berita</h3>
-      <p>Ini adalah berita contoh yang akan ditampilkan di halaman utama.</p>
-    </div>
+    <!-- Konten berita akan dimuat di sini -->
   </main>
 
   <footer>
     <p>&copy; 2025 - Berita Harian oleh Alass</p>
   </footer>
 
-  <!-- SCRIPT DITARUH PALING AKHIR -->
+  <!-- Script internal langsung -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const menuBtn = document.getElementById('menuBtn');
-      const menuList = document.getElementById('menuList');
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const menuBtn = document.getElementById("menuBtn");
+      const menuList = document.getElementById("menuList");
 
-      // Dark mode toggle
-      darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        darkModeToggle.textContent = isDark ? '☀️' : '🌙';
-      });
-
-      // Load saved dark mode
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        darkModeToggle.textContent = '☀️';
+      // Mode gelap
+      function applyTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.body.classList.add("dark-mode");
+          darkModeToggle.textContent = "☀️";
+        } else {
+          document.body.classList.remove("dark-mode");
+          darkModeToggle.textContent = "🌙";
+        }
       }
 
-      // Toggle menu
-      menuBtn.addEventListener('click', () => {
-        menuList.classList.toggle('hidden');
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        darkModeToggle.textContent = isDark ? "☀️" : "🌙";
+      });
+
+      applyTheme();
+
+      // Toggle menu strip 3
+      menuBtn.addEventListener("click", () => {
+        menuList.classList.toggle("hidden");
       });
     });
   </script>
