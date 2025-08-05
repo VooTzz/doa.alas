@@ -181,7 +181,9 @@ footer {
 }
 
 /* BUTTONS */
-button#darkModeBtn, button#loginBtn {
+button#darkModeBtn,
+button#loginBtn,
+button#darkModeToggle {
   margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
@@ -191,7 +193,9 @@ button#darkModeBtn, button#loginBtn {
   cursor: pointer;
 }
 
-body.dark-mode button#darkModeBtn, body.dark-mode button#loginBtn {
+body.dark-mode button#darkModeBtn,
+body.dark-mode button#loginBtn,
+body.dark-mode button#darkModeToggle {
   background-color: #059669;
 }
 
