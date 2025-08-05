@@ -1,18 +1,111 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width"/>
-  <title>Juz 30 – Juz Amma</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juz 30 – Juz Amma</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      color: #222;
+    }
+
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-button {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    .surat-item {
+      background: white;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .surat-item:hover {
+      background: #e3f2fd;
+    }
+
+    .ayat-container {
+      margin-top: 10px;
+      padding-left: 15px;
+      border-left: 3px solid #2196f3;
+    }
+
+    .ayat {
+      margin-bottom: 10px;
+    }
+
+    .arab {
+      font-size: 1.4em;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .latin {
+      color: #555;
+      font-style: italic;
+    }
+
+    .arti {
+      margin-top: 0.2rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin: 2rem 0 1rem;
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <h1>Juz 30 (Juz Amma)</h1>
+  <header>
+    <button class="menu-button" id="menuButton">☰</button>
+    <h1>Juz 30 (Juz Amma)</h1>
     <nav><a href="index.html">⬅ Kembali</a></nav>
   </header>
-  <main id="juz30Container"></main>
-  <footer><p>&copy; 2025 – Juz 30</p></footer>
+
+  <main id="juz30Container">
+    <p>Memuat surat...</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 – Juz 30</p>
+  </footer>
+
   <script src="juz30.js"></script>
 </body>
 </html>
