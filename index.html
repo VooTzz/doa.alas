@@ -13,10 +13,16 @@
     <div class="tools">
       <input type="text" id="searchInput" class="long-search" placeholder="Cari berita..." />
       <div id="searchHistory"></div>
-      <button id="darkModeToggle">🌙</button>
-      <button id="loginBtn">🔐 Login</button>
+      
+      <!-- Tombol Mode Gelap -->
+      <button id="darkModeToggle" title="Ganti Mode">🌙</button>
+      
+      <!-- Tombol Login -->
+      <button id="loginBtn" onclick="window.location.href='login.html'">🔐 Login</button>
+
+      <!-- Menu Navigasi -->
       <nav>
-        <button id="menuBtn">⋮</button>
+        <button id="menuBtn">☰</button>
         <ul id="menuList" class="hidden">
           <li><a href="halaman2.html">📿 Doa Harian</a></li>
           <li><a href="tentang.html">🙋 Tentang Saya</a></li>
@@ -34,6 +40,39 @@
     <p>&copy; 2025 - Berita Harian oleh Alass</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // === DARK MODE ===
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Load tema dari localStorage
+    function applySavedTheme() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && prefersDark)) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.textContent = '☀️';
+      } else {
+        document.body.classList.remove('dark-mode');
+        darkModeToggle.textContent = '🌙';
+      }
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    applySavedTheme();
+
+    // === MENU TOGGLE ===
+    const menuBtn = document.getElementById("menuBtn");
+    const menuList = document.getElementById("menuList");
+
+    menuBtn.addEventListener("click", () => {
+      menuList.classList.toggle("hidden");
+    });
+  </script>
 </body>
 </html>
