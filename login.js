@@ -1,9 +1,9 @@
 // Konfigurasi Firebase
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAY6qjVQdDZC6sP9RSvhQGfaa5c2wn_ST4",
+  authDomain: "quranku-5d105.firebaseapp.com",
+  projectId: "quranku-5d105",
+  appId: "1:643861907201:web:3a8d1e16e52e0114e4bd00"
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
